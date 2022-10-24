@@ -5,7 +5,7 @@
         <div class="col-lg-4 col-md-6 ml-auto mr-auto">
             <div class="card card-register card-white">
                 <div class="card-header">
-                    <h4 class="card-title">{{ __('Register') }}</h4>
+                    <h4 class="card-title">{{ __('Registrarse') }}</h4>
                 </div>
                 <form class="form" method="post" action="{{ route('register') }}">
                     @csrf
@@ -18,7 +18,7 @@
                                 </div>
                             </div>
                             <input type="text" name="name" class="form-control{{ $errors->has('name') ? ' is-invalid' : '' }}" placeholder="{{ __('Name') }}">
-                        </div>
+                        </div></br>
                         <div class="input-group{{ $errors->has('email') ? ' has-danger' : '' }}">
                             <div class="input-group-prepend">
                                 <div class="input-group-text">
@@ -26,7 +26,7 @@
                                 </div>
                             </div>
                             <input type="email" name="email" class="form-control{{ $errors->has('email') ? ' is-invalid' : '' }}" placeholder="{{ __('Email') }}">
-                        </div>
+                        </div></br>
                         <div class="input-group{{ $errors->has('password') ? ' has-danger' : '' }}">
                             <div class="input-group-prepend">
                                 <div class="input-group-text">
@@ -34,7 +34,7 @@
                                 </div>
                             </div>
                             <input type="password" name="password" class="form-control{{ $errors->has('password') ? ' is-invalid' : '' }}" placeholder="{{ __('Password') }}">
-                        </div>
+                        </div></br>
                         <div class="input-group">
                             <div class="input-group-prepend">
                                 <div class="input-group-text">
@@ -45,7 +45,7 @@
                         </div>
                     </div>
                     <div class="card-footer">
-                        <button type="submit" class="btn btn-primary btn-round btn-lg">{{ __('Get Started') }}</button>
+                        <button type="submit" class="btn btn-primary btn-round btn-lg">{{ __('Registrarse') }}</button>
                     </div>
                 </form>
             </div>
