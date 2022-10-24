@@ -17,7 +17,7 @@
                                     <i class="tim-icons icon-single-02"></i>
                                 </div>
                             </div>
-                            <input type="text" name="name" class="form-control{{ $errors->has('name') ? ' is-invalid' : '' }}" placeholder="{{ __('Name') }}">
+                            <input type="text" name="name" class="form-control{{ $errors->has('name') ? ' is-invalid' : '' }}" placeholder="{{ __('Nombre') }}">
                         </div></br>
                         <div class="input-group{{ $errors->has('email') ? ' has-danger' : '' }}">
                             <div class="input-group-prepend">
@@ -33,7 +33,7 @@
                                     <i class="tim-icons icon-lock-circle"></i>
                                 </div>
                             </div>
-                            <input type="password" name="password" class="form-control{{ $errors->has('password') ? ' is-invalid' : '' }}" placeholder="{{ __('Password') }}">
+                            <input type="password" name="password" class="form-control{{ $errors->has('password') ? ' is-invalid' : '' }}" placeholder="{{ __('Contraseña') }}">
                         </div></br>
                         <div class="input-group">
                             <div class="input-group-prepend">
@@ -41,7 +41,7 @@
                                     <i class="tim-icons icon-lock-circle"></i>
                                 </div>
                             </div>
-                            <input type="password" name="password_confirmation" class="form-control" placeholder="{{ __('Confirm Password') }}">
+                            <input type="password" name="password_confirmation" class="form-control" placeholder="{{ __('Confirmar Contraseña') }}">
                         </div>
                     </div>
                     <div class="card-footer">
