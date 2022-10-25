@@ -77,4 +77,14 @@
         </main>
     </div>
 </body>
+<script type="text/javascript">
+    function confirmarEliminar(){
+        var x=confirm("¿Estas seguro de que deseas eliminar este usuario?")
+        if(x){
+            return true;
+        else
+            return false;
+        }
+    }
+</script>
 </html>
