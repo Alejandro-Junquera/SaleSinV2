@@ -13,7 +13,7 @@ class CreateOffersTable extends Migration
      */
     public function up()
     {
-        Schema::create('Offers', function (Blueprint $table) {
+        Schema::create('offers', function (Blueprint $table) {
             $table->engine = "InnoDB";
             $table->bigIncrements('id');
             $table->text('title');
@@ -21,7 +21,7 @@ class CreateOffersTable extends Migration
             $table->date('date_max');
             $table->integer('num_candidates');
             $table->unsignedBigInteger('cicle_id');
-            $table->foreign('cicle_id')->references('id')->on('Cicles');
+            $table->foreign('cicle_id')->references('id')->on('cicles');
             $table->boolean('deleted')->default(0);
             $table->timestamps();
         });
@@ -34,6 +34,6 @@ class CreateOffersTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('Offers');
+        Schema::dropIfExists('offers');
     }
 }
