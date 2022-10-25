@@ -27,6 +27,18 @@
                             </div>
                             <input type="text" name="surname" class="form-control{{ $errors->has('surname') ? ' is-invalid' : '' }}" placeholder="{{ __('Apellido') }}">
                         </div></br>
+                        <div class="input-group{{ $errors->has('surname') ? ' has-danger' : '' }}">
+                            <div class="input-group-prepend">
+                                <div class="input-group-text">
+                                    <i class="tim-icons icon-single-02"></i>
+                                </div>
+                            </div>
+                            <select class="form-control{{ $errors->has('cicle_id') ? ' is-invalid' : '' }}" name="cicle_id">
+                                <option value="" selected disabled hidden>Choose here</option>
+                                <option value="1">1ºDAM</option>
+                                <option value="2">2ºDAM</option>
+                            </select>
+                        </div></br>
                         <div class="input-group{{ $errors->has('email') ? ' has-danger' : '' }}">
                             <div class="input-group-prepend">
                                 <div class="input-group-text">
