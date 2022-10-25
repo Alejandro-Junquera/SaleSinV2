@@ -20,8 +20,8 @@ class CreateOffersTable extends Migration
             $table->text('description');
             $table->date('date_max');
             $table->integer('num_candidates');
-            $table->unsignedBigInteger('cicles_id');
-            $table->foreign('cicles_id')->references('id')->on('cicles');
+            $table->unsignedBigInteger('cicle_id');
+            $table->foreign('cicle_id')->references('id')->on('cicles');
             $table->boolean('deleted')->default(0);
             $table->timestamps();
         });
