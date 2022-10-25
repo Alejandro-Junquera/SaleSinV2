@@ -2,14 +2,14 @@
 
 /** @var \Illuminate\Database\Eloquent\Factory $factory */
 
-use App\articles;
+use App\Articles;
 use Faker\Generator as Faker;
 
-$factory->define(articles::class, function (Faker $faker) {
+$factory->define(Articles::class, function (Faker $faker) {
     return [
-        'title'=> $faker->paragraph,
-        'image'=> $faker->paragraph,
+        'title'=> $faker->sentence,
+        'image'=> $faker->sentence,
         'description'=> $faker->paragraph,
-        'cicles_id'=> \App\cicles::all()->random()->id
+        'cicle_id'=> \App\Cicles::all()->random()->id
     ];
 });
