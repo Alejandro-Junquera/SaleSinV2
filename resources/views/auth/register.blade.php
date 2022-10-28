@@ -27,7 +27,7 @@
                             </div>
                             <input type="text" name="surname" class="form-control{{ $errors->has('surname') ? ' is-invalid' : '' }}" placeholder="{{ __('Apellido') }}">
                         </div></br>
-                        <div class="input-group{{ $errors->has('surname') ? ' has-danger' : '' }}">
+                        <div class="input-group{{ $errors->has('cicle_id') ? ' has-danger' : '' }}">
                             <div class="input-group-prepend">
                                 <div class="input-group-text">
                                     <i class="tim-icons icon-single-02"></i>

@@ -33,7 +33,9 @@
                 <div class="collapse navbar-collapse" id="navbarSupportedContent">
                     <!-- Left Side Of Navbar -->
                     <ul class="navbar-nav mr-auto">
-
+                        <li class="navbar-brand">
+                            <a style=" color:black" href="{{(route('users.index'))}}">Manage users<a/>
+                        </li>
                     </ul>
 
                     <!-- Right Side Of Navbar -->
@@ -73,18 +75,11 @@
         </nav>
 
         <main class="py-4">
+            @include('partials.alerts')
             @yield('content')
         </main>
     </div>
 </body>
-<script type="text/javascript">
-    function confirmarEliminar(){
-        var x=confirm("¿Estas seguro de que deseas eliminar este usuario?")
-        if(x){
-            return true;
-        else
-            return false;
-        }
-    }
-</script>
+<script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.6/dist/umd/popper.min.js" integrity="sha384-oBqDVmMz9ATKxIep9tiCxS/Z9fNfEXiDAYTujMAeBAsjFuCZSmKbSSUnQlmh/jp3" crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/js/bootstrap.min.js" integrity="sha384-IDwe1+LCz02ROU9k972gdyvl+AESN10+x7tBKgc9I5HFtuNz0wWnPclzo6p9vxnk" crossorigin="anonymous"></script>
 </html>

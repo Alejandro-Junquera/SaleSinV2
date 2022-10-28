@@ -18,4 +18,6 @@ Route::get('/', function () {
 Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');
-Route::resource('admin','AdminController');
+Route::resource('/users','Admin\UserController',['except'=>['show','create','store']]);
+Route::post('user/activate/{id}', 'Admin\UserController@activate')->name('activate');
+Route::post('user/disable/{id}','Admin\UserController@disable')->name('disable');
