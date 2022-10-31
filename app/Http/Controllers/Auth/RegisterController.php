@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Auth;
 
 use App\User;
+use App\cicles;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Validator;
@@ -73,4 +74,15 @@ class RegisterController extends Controller
             'password' => Hash::make($data['password']),
         ]);
     }
+
+/**
+ * Show the application registration form.
+ *
+ * @return \Illuminate\Http\Response
+ */
+public function showRegistrationForm()
+{
+    $cicles=cicles::all();
+    return view('auth.register', compact('cicles'));
+}
 }
