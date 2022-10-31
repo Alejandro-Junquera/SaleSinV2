@@ -71,6 +71,14 @@ class UserController extends Controller
         return redirect()->route('users.index')
         ->with('success','user deleted successfully');
     }
+    public function softDestroy($id)
+    {
+        $users = User::find($id);
+        $users->deleted = '1';
+        $users->save();
+        return redirect()->route('users.index')
+        ->with('success','user deleted successfully');
+    }
     public function activate($id)
     {
         $users = User::find($id);

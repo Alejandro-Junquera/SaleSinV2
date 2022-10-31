@@ -18,6 +18,8 @@
                     </thead>
                      <tbody>
                         @foreach($users as $user)
+                        @if($user->deleted==1)
+                        @else
                         <tr>
                             <td>{{$user->name}}</td>
                             <td>{{$user->surname}}</td>
@@ -35,9 +37,9 @@
                                 {{-- Delete - Modal --}}
                                 <div class="modal fade" id="modal-delete-{{$user->id}}" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
                                     <div class="modal-dialog">
-                                    <form action="{{route('users.destroy',$user->id)}}" method="POST" class="float-left">
+                                    <form action="{{ route('softD', $user->id)}}" method="POST" class="float-left">
                                      @csrf
-                                    @method('DELETE')
+                                     @method('POST')
                                     <div class="modal-content">
                                     <div class="modal-header">
                                         <h1 class="modal-title fs-5" id="exampleModalLabel">Delete User</h1>
@@ -48,7 +50,7 @@
                                     </div>
                                     <div class="modal-footer">
                                         <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-                                    <input type="submit" class="btn btn-danger btm-sm" value="delete"/>
+                                    <input type="submit" class="btn btn-danger btm-sm"/>
                                     </div>
                                     </div>
                                     </form>
@@ -71,6 +73,7 @@
                             </td>
                         </tr>
                         <!--@include('admin.users.delete')-->
+                        @endif
                         @endforeach
                      </tbody>
                  </table>

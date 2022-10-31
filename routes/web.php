@@ -21,3 +21,4 @@ Route::get('/home', 'HomeController@index')->name('home');
 Route::resource('/users','Admin\UserController',['except'=>['show','create','store']]);
 Route::post('user/activate/{id}', 'Admin\UserController@activate')->name('activate');
 Route::post('user/disable/{id}','Admin\UserController@disable')->name('disable');
+Route::post('user/softD/{id}','Admin\UserController@softDestroy')->name('softD');
