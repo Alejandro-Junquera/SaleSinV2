@@ -13,6 +13,7 @@
                             <th scope="col">Name</th>
                             <th scope="col">Surname</th>
                             <th scope="col">Email</th>
+                            <th scope="col">Rol</th>
                             <th scope="col">Actions</th>
                         </tr>
                     </thead>
@@ -24,8 +25,9 @@
                             <td>{{$user->name}}</td>
                             <td>{{$user->surname}}</td>
                             <td>{{$user->email}}</td>
+                            <td>{{$user->type}}</td>
                             <td>
-                                <a href="{{route('users.edit',$user->id)}}" class="float-left">
+                                <a href="{{route('admin.users.edit',$user->id)}}" class="float-left">
                                     <button type="button" class="btn btn-primary btm-sm">Edit</button>
                                 </a>
                                 <a style="visibility: hidden"class="float-left"><-</a>
@@ -37,7 +39,7 @@
                                 {{-- Delete - Modal --}}
                                 <div class="modal fade" id="modal-delete-{{$user->id}}" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
                                     <div class="modal-dialog">
-                                    <form action="{{ route('softD', $user->id)}}" method="POST" class="float-left">
+                                    <form action="{{ route('admin.softD', $user->id)}}" method="POST" class="float-left">
                                      @csrf
                                      @method('POST')
                                     <div class="modal-content">
@@ -58,25 +60,27 @@
                                 </div>
                                 {{-- End Delete Modal --}}
                                 <a style="visibility: hidden"class="float-left"><-</a>
+                                <a class="float-left">
                                  @if($user->actived=='0')
-                                    <form action="{{ route('activate', $user->id)}}" method="POST">
+                                    <form action="{{ route('admin.activate', $user->id)}}" method="POST">
                                         @csrf
                                         @method('POST')
                                         <button class="btn btn-primary" type="submit">Activate User</button>
                                     </form>
                                          @else
-                                    <form action="{{ route('disable', $user->id)}}" method="POST">
+                                    <form action="{{ route('admin.disable', $user->id)}}" method="POST">
                                         @csrf
                                         <button class="btn btn-primary" type="submit">Disable User</button>
                                     </form>
                                          @endif
+                                </a>
                             </td>
                         </tr>
-                        <!--@include('admin.users.delete')-->
                         @endif
                         @endforeach
                      </tbody>
                  </table>
+                 {{$users->links()}}
                 </div>
             </div>
         </div>

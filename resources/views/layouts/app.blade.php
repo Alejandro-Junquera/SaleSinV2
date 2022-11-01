@@ -34,7 +34,7 @@
                     <!-- Left Side Of Navbar -->
                     <ul class="navbar-nav mr-auto">
                         <li class="navbar-brand">
-                            <a style=" color:black" href="{{(route('users.index'))}}">Manage users<a/>
+                            <a style=" color:black" href="{{(route('admin.users.index'))}}">Manage users<a/>
                         </li>
                     </ul>
 

@@ -5,7 +5,6 @@ namespace App\Http\Controllers\Admin;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use App\User;
-use App\cicles;
 
 
 class UserController extends Controller
@@ -17,7 +16,7 @@ class UserController extends Controller
      */
     public function index()
     {
-        return view('admin.users.index')->with('users',User::all());
+        return view('admin.users.index')->with('users',User::paginate(11));
     }
 
     /**
@@ -33,6 +32,10 @@ class UserController extends Controller
      */
     public function edit($id)
     {
+        $user=auth()->user();
+        if($user->id==$id){
+            return redirect()->route('admin.users.index')->with('error','You can not edit yourself');
+        }
         return view('admin.users.edit')->with(['user'=>User::find($id)]);
     }
 
@@ -50,12 +53,11 @@ class UserController extends Controller
             'name' => 'required',
             'surname' => 'required',
             'email' => 'required',
-            'actived'=>'required',
         ]);
   
         $user->update($request->all());
   
-        return redirect()->route('users.index')
+        return redirect()->route('admin.users.index')
                         ->with('success','user updated successfully');
     }
 
@@ -73,14 +75,22 @@ class UserController extends Controller
     }
     public function softDestroy($id)
     {
+        $user=auth()->user();
+        if($user->id==$id){
+            return redirect()->route('admin.users.index')->with('error','You can not delete yourself');
+        }
         $users = User::find($id);
         $users->deleted = '1';
         $users->save();
-        return redirect()->route('users.index')
+        return redirect()->route('admin.users.index')
         ->with('success','user deleted successfully');
     }
     public function activate($id)
     {
+        $user=auth()->user();
+        if($user->id==$id){
+            return redirect()->route('admin.users.index')->with('error','You can not activate yourself');
+        }
         $users = User::find($id);
         $users->actived = '1';
         $users->save();
@@ -89,6 +99,10 @@ class UserController extends Controller
 
     public function disable($id)
     {
+        $user=auth()->user();
+        if($user->id==$id){
+            return redirect()->route('admin.users.index')->with('error','You can not disabled yourself');
+        }
         $users = User::find($id);
         $users->actived = '0';
         $users->save();

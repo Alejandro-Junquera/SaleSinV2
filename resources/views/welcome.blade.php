@@ -48,8 +48,8 @@
             }
             .container {
                 position:relative;
-                height: 650px;
-                width: 800px;
+                height: 600px;
+                width: 600px;
             }
 
             .title {
@@ -68,6 +68,9 @@
 
             .m-b-md {
                 margin-bottom: 30px;
+            }
+            h2{
+                font-size:100px;
             }
         </style>
     </head>

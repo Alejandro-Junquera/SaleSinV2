@@ -7,7 +7,7 @@
             <div class="card">
                 <div class="card-header">Manage Users{{$user->name}}</div>
                 <div class="card-body">
-                <form action="{{ route('users.update',['user'=>$user->id]) }}" method="POST">
+                <form action="{{ route('admin.users.update',['user'=>$user->id]) }}" method="POST">
                 @csrf
                 @method('PUT')
                     <div class="row">
