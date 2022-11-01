@@ -14,7 +14,7 @@
                         <div class="input-group{{ $errors->has('name') ? ' has-danger' : '' }}">
                             <div class="input-group-prepend">
                                 <div class="input-group-text">
-                                    <i class="tim-icons icon-single-02"></i>
+                                    <i class="fa fa-user"></i>
                                 </div>
                             </div>
                             <input type="text" name="name" class="form-control{{ $errors->has('name') ? ' is-invalid' : '' }}" placeholder="{{ __('Nombre') }}">
@@ -22,7 +22,7 @@
                         <div class="input-group{{ $errors->has('surname') ? ' has-danger' : '' }}">
                             <div class="input-group-prepend">
                                 <div class="input-group-text">
-                                    <i class="tim-icons icon-single-02"></i>
+                                    <i class="fa fa-user"></i>
                                 </div>
                             </div>
                             <input type="text" name="surname" class="form-control{{ $errors->has('surname') ? ' is-invalid' : '' }}" placeholder="{{ __('Apellido') }}">
@@ -30,7 +30,7 @@
                         <div class="input-group{{ $errors->has('cicle') ? ' has-danger' : '' }}">
                             <div class="input-group-prepend">
                                 <div class="input-group-text">
-                                    <i class="tim-icons icon-single-02"></i>
+                                <i class="fa fa-bookmark"></i>
                                 </div>
                             </div>
                             <select class="form-control{{ $errors->has('cicle_id') ? ' is-invalid' : '' }}" name="cicle_id">
@@ -43,7 +43,7 @@
                         <div class="input-group{{ $errors->has('email') ? ' has-danger' : '' }}">
                             <div class="input-group-prepend">
                                 <div class="input-group-text">
-                                    <i class="tim-icons icon-email-85"></i>
+                                <i class="fa fa-envelope"></i>
                                 </div>
                             </div>
                             <input type="email" name="email" class="form-control{{ $errors->has('email') ? ' is-invalid' : '' }}" placeholder="{{ __('Email') }}">
@@ -51,7 +51,7 @@
                         <div class="input-group{{ $errors->has('password') ? ' has-danger' : '' }}">
                             <div class="input-group-prepend">
                                 <div class="input-group-text">
-                                    <i class="tim-icons icon-lock-circle"></i>
+                                <i class="fa fa-unlock"></i>
                                 </div>
                             </div>
                             <input type="password" name="password" class="form-control{{ $errors->has('password') ? ' is-invalid' : '' }}" placeholder="{{ __('Contraseña') }}">
@@ -59,7 +59,7 @@
                         <div class="input-group">
                             <div class="input-group-prepend">
                                 <div class="input-group-text">
-                                    <i class="tim-icons icon-lock-circle"></i>
+                                <i class="fa fa-lock"></i>
                                 </div>
                             </div>
                             <input type="password" name="password_confirmation" class="form-control" placeholder="{{ __('Confirmar Contraseña') }}">

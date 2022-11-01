@@ -14,7 +14,7 @@
                     <div class="input-group{{ $errors->has('email') ? ' has-danger' : '' }}">
                         <div class="input-group-prepend">
                             <div class="input-group-text">
-                                <i class="tim-icons icon-email-85"></i>
+                            <i class="fa fa-envelope"></i>
                             </div>
                         </div>
                         <input type="email" name="email" class="form-control{{ $errors->has('email') ? ' is-invalid' : '' }}" placeholder="{{ __('Email') }}">
@@ -22,7 +22,7 @@
                     <div class="input-group{{ $errors->has('password') ? ' has-danger' : '' }}">
                         <div class="input-group-prepend">
                             <div class="input-group-text">
-                                <i class="tim-icons icon-lock-circle"></i>
+                            <i class="fa fa-unlock"></i>
                             </div>
                         </div>
                         <input type="password" placeholder="{{ __('Contraseña') }}" name="password" class="form-control{{ $errors->has('password') ? ' is-invalid' : '' }}">
@@ -32,12 +32,7 @@
                     <button type="submit" href="" class="btn btn-primary btn-lg btn-block mb-3">{{ __('Iniciar sesion') }}</button>
                     <div class="pull-left">
                         <h6>
-                            <a href="{{ route('register') }}" class="link footer-link">{{ __('Crea un usuario') }}</a>
-                        </h6>
-                    </div>
-                    <div class="pull-right">
-                        <h6>
-                            <a href="{{ route('password.request') }}" class="link footer-link">{{ __('¿Olvidaste tu contraseña?') }}</a>
+                            <a href="{{ route('register') }}" class="link footer-link">{{ __('Crear un usuario') }}</a>
                         </h6>
                     </div>
                 </div>
