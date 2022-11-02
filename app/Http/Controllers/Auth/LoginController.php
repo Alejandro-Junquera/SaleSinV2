@@ -52,17 +52,24 @@ class LoginController extends Controller
             $user = $this->guard()->getLastAttempted();
     
             // Make sure the user is active
-            if ($user->actived && $this->attemptLogin($request)) {
-                // Send the normal successful login response
-                return $this->sendLoginResponse($request);
-            } else {
-                // Increment the failed login attempts and redirect back to the
-                // login form with an error message.
-                $this->incrementLoginAttempts($request);
+            if(!$user->deleted){
+                if ($user->actived && $this->attemptLogin($request)) {
+                    // Send the normal successful login response
+                    return $this->sendLoginResponse($request);
+                } else {
+                    // Increment the failed login attempts and redirect back to the
+                    // login form with an error message.
+                    $this->incrementLoginAttempts($request);
+                    return redirect()
+                    -> route('login')
+                    ->with('error','Administrator must active your account');
+                }
+            }else{
                 return redirect()
-                -> route('login')
-                ->with('error','Administrator must active your account');
+                    -> route('login')
+                    ->with('error','your acount was deleted');
             }
+           
         }
     
         // If the login attempt was unsuccessful we will increment the number of attempts
