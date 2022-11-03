@@ -7,7 +7,7 @@
             <div class="card card-login card-white">
                 <div class="card-header">
                     <img src="{{ asset('black') }}/img/card-primary.png" alt="">
-                    <h1 class="card-title">{{ __('Iniciar Sesión') }}</h1>
+                    <h1 class="card-title">{{ __('Log in') }}</h1>
                 </div>
                 <div class="card-body">
                     <p class="text-dark mb-2">
@@ -25,14 +25,15 @@
                             <i class="fa fa-unlock"></i>
                             </div>
                         </div>
-                        <input type="password" placeholder="{{ __('Contraseña') }}" name="password" class="form-control{{ $errors->has('password') ? ' is-invalid' : '' }}">
+                        <input type="password" placeholder="{{ __('Password') }}" name="password" class="form-control{{ $errors->has('password') ? ' is-invalid' : '' }}">
                     </div>
                 </div>
                 <div class="card-footer">
-                    <button type="submit" href="" class="btn btn-primary btn-lg btn-block mb-3">{{ __('Iniciar sesion') }}</button>
+                    <button type="submit" href="" class="btn btn-primary btn-lg btn-block mb-3">{{ __('Log in') }}</button>
+                    @include('partials.errors')
                     <div class="pull-left">
                         <h6>
-                            <a href="{{ route('register') }}" class="link footer-link">{{ __('Crear un usuario') }}</a>
+                            <a href="{{ route('register') }}" class="link footer-link">{{ __('Create an user') }}</a>
                         </h6>
                     </div>
                 </div>
