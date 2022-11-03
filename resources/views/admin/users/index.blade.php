@@ -48,7 +48,7 @@
                                         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                                     </div>
                                     <div class="modal-body">
-                                        ¿Deseas eliminar al usuario {{$user->name." ".$user->surname}}?
+                                        Delete {{$user->name." ".$user->surname}}?
                                     </div>
                                     <div class="modal-footer">
                                         <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
