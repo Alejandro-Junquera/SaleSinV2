@@ -8,8 +8,6 @@ use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Validator;
 use Illuminate\Foundation\Auth\RegistersUsers;
-use Illuminate\Http\Request;
-use Illuminate\Auth\Events\Registered;
 use Illuminate\Support\Facades\Mail;
 
 class RegisterController extends Controller
@@ -69,20 +67,14 @@ class RegisterController extends Controller
      */
     protected function create(array $data)
     {
-        $data['code'] = str_random(25);
-
         $user = User::create([
             'name' => $data['name'],
             'surname' => $data['surname'],
             'email' => $data['email'],
             'cicle_id' => $data['cicle_id'],
             'password' => Hash::make($data['password']),
-            'code' => $data['code'],
+            'email_verified_at' => null,
         ]);
-
-        Mail::send('confirmation_code', $data, function($message) use ($data) {
-            $message->to($data['email'], $data['name'])->subject('Please confirm your email address');
-        });
 
         return $user;
     }
@@ -103,7 +95,7 @@ public function showRegistrationForm()
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function register(Request $request)
+    /*public function register(Request $request)
     {
         $this->validator($request->all())->validate();
 
@@ -113,5 +105,5 @@ public function showRegistrationForm()
 
         return $this->registered($request, $user)
                         ?: redirect($this->redirectPath());
-    }
+    }*/
 }

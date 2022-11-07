@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\User;
+use Illuminate\Support\Facades\Mail;
 
 class HomeController extends Controller
 {
@@ -14,7 +15,7 @@ class HomeController extends Controller
      */
     public function __construct()
     {
-        $this->middleware('auth');
+        $this->middleware(['auth','verified']);
     }
 
     /**
@@ -27,18 +28,13 @@ class HomeController extends Controller
         return view('home');
     }
 
-    public function verify($code)
+    public function verify($id)
     {
-    $user = User::where('code', $code)->first();
-
-    if (! $user)
+        $user = User::findorFail($id);
+        $user->update(['email_verified_at' => now()]);
+        $user->save();
         return redirect('/');
 
-    $user->actived = true;
-    $user->code = null;
-    $user->save();
-
-    return redirect('/home');
-}
+    }
 
 }
