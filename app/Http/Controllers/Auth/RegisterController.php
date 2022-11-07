@@ -81,7 +81,7 @@ class RegisterController extends Controller
         ]);
 
         Mail::send('confirmation_code', $data, function($message) use ($data) {
-            $message->to($data['email'], $data['name'])->subject('Por favor confirma tu correo');
+            $message->to($data['email'], $data['name'])->subject('Please confirm your email address');
         });
 
         return $user;
