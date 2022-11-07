@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\User;
 
 class HomeController extends Controller
 {
@@ -25,4 +26,19 @@ class HomeController extends Controller
     {
         return view('home');
     }
+
+    public function verify($code)
+    {
+    $user = User::where('code', $code)->first();
+
+    if (! $user)
+        return redirect('/');
+
+    $user->actived = true;
+    $user->code = null;
+    $user->save();
+
+    return redirect('/home');
+}
+
 }

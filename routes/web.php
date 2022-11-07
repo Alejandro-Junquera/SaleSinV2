@@ -16,6 +16,7 @@ Route::get('/', function () {
 });
 
 Auth::routes();
+Route::get('/register/verify/{code}', 'HomeController@verify');
 
 Route::get('/home', 'HomeController@index')->name('home');
 Route::namespace('Admin')->prefix('admin')->middleware(['auth','auth.admin'])->name('admin.')->group(function(){
