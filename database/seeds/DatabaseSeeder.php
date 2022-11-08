@@ -17,7 +17,7 @@ class DatabaseSeeder extends Seeder
             'surname'=>'Admin',
             'email'=>'admin@admin.com',
             'email_verified_at' => now(),
-            'password'=>bcrypt('admin'),
+            'password'=>bcrypt('12345678'),
             'type'=>'A',
             'actived'=>'1',
             'cicle_id'=>'1',
