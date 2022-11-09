@@ -4,6 +4,8 @@ namespace App\Http\Controllers\Auth;
 
 use App\User;
 use App\cicles;
+use Illuminate\Http\Request;
+use Illuminate\Auth\Events\Registered;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Validator;
@@ -90,20 +92,17 @@ public function showRegistrationForm()
     return view('auth.register', compact('cicles'));
 }
 /**
-     * Handle a registration request for the application.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
-     */
-    /*public function register(Request $request)
-    {
-        $this->validator($request->all())->validate();
-
-        event(new Registered($user = $this->create($request->all())));
-
-        // $this->guard()->login($user);
-
-        return $this->registered($request, $user)
+ * Handle a registration request for the application.
+ *
+ * @param  \Illuminate\Http\Request  $request
+ * @return \Illuminate\Http\Response
+ */
+public function register(Request $request)
+{
+    $this->validator($request->all())->validate();
+    event(new Registered($user = $this->create($request->all())));
+    // $this->guard()->login($user);
+    return $this->registered($request, $user)
                         ?: redirect($this->redirectPath());
-    }*/
+ }
 }

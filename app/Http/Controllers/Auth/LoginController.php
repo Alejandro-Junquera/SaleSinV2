@@ -53,16 +53,22 @@ class LoginController extends Controller
     
             // Make sure the user is active
             if(!$user->deleted){
-                if ($user->actived && $this->attemptLogin($request)) {
+                if ($user->actived && $user->email_verified_at!=null && $this->attemptLogin($request)) {
                     // Send the normal successful login response
                     return $this->sendLoginResponse($request);
                 } else {
                     // Increment the failed login attempts and redirect back to the
                     // login form with an error message.
                     $this->incrementLoginAttempts($request);
-                    return redirect()
-                    -> route('login')
-                    ->with('error','Administrator must active your account');
+                    if($user->email_verified_at==null){
+                        return redirect()
+                        -> route('login')
+                        ->with('error','Verified your email');
+                    }else{
+                        return redirect()
+                        -> route('login')
+                        ->with('error','Administrator must active your account');
+                    }
                 }
             }else{
                 return redirect()

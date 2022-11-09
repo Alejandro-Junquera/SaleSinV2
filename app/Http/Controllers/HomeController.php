@@ -27,14 +27,4 @@ class HomeController extends Controller
     {
         return view('home');
     }
-
-    public function verify($id)
-    {
-        $user = User::findorFail($id);
-        $user->update(['email_verified_at' => now()]);
-        $user->save();
-        return redirect('/');
-
-    }
-
 }
