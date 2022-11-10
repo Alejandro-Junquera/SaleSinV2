@@ -7,8 +7,8 @@
             <div class="card">
                 <div class="card-header">Manage Users</div>
                 <div class="card-body">
-                <table class="table">
-                    <thead>
+                <table class="table table-striped table-bordered">
+                    <thead class="thead-light">
                         <tr>
                             <th scope="col">Name</th>
                             <th scope="col">Surname</th>
