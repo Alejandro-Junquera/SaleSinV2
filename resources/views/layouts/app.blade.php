@@ -38,6 +38,9 @@
                         <li class="navbar-brand">
                             <a style=" color:black" href="{{(route('admin.users.index'))}}">Manage users<a/>
                         </li>
+                        <li class="navbar-brand">
+                            <a style=" color:black" href="{{(route('admin.articles.index'))}}">Manage Articles<a/>
+                        </li>
                     </ul>
 
                     <!-- Right Side Of Navbar -->
