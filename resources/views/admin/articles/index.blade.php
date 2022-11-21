@@ -26,7 +26,12 @@
                             <td>{{$article->description}}</td>
                         </tr>
                         <tr>
-                            <td>Botones</td>
+                            <td>
+
+                            <a class="btn btn-primary btm-sm" href="{{ route('admin.articles.create') }}"> Edit</a>
+                            <a class="btn btn-danger btm-sm" href="{{ route('admin.articles.create') }}"> Delete</a>
+
+                            </td>
                         </tr>
                         @endif
                         @endforeach
