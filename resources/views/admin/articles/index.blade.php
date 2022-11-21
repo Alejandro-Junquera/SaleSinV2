@@ -8,20 +8,19 @@
                 <div class="card-header">Manage Articles</div>
                 <br/>
                 <div class="col-lg-11 col-md-11 col-sm-11 container justify-content-center">
-                <a class="btn btn-success" href="{{ route('admin.articles.create') }}"> Create New Article</a>
-                </div>
-                <div class="card-body">
+                    </div>
+                    <div class="card-body">
                 <table class="table table-striped table-bordered">
                     <thead class="thead-light">
                         
-                    </thead>
-                     <tbody>
+                        </thead>
+                        <tbody>
                         @foreach($articles as $article)
                         @if($article->deleted==1)
                         @else
                         <tr>
                             <td><div class="col-lg-4 col-md-4 col-sm-4 container justify-content-center">{{$article->title}}<div></td>
-
+                            
                         </tr>
                         <tr>
                             <td>{{$article->description}}</td>
@@ -31,8 +30,11 @@
                         </tr>
                         @endif
                         @endforeach
-                     </tbody>
-                 </table>
+                    </tbody>
+                </table>
+                <a class="btn btn-success" href="{{ route('admin.articles.create') }}"> Create New Article</a>
+                    <br>
+                    <br>
                  {{$articles->links()}}
                 </div>
             </div>
