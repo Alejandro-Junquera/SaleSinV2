@@ -15,7 +15,7 @@ class ArticleController extends Controller
      */
     public function index()
     {
-        return view('admin.articles.index')->with('articles',Articles::paginate(1));
+        return view('admin.articles.index')->with('articles',Articles::paginate(5));
     }
 
     /**
@@ -67,7 +67,8 @@ class ArticleController extends Controller
      */
     public function edit($id)
     {
-        //
+        $cicles=cicles::all();
+        return view('admin.articles.edit', compact('cicles'))->with(['article'=>Articles::find($id)]);
     }
 
     /**
@@ -78,8 +79,20 @@ class ArticleController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function update(Request $request, $id)
-    {
-        //
+    { 
+        $article=Articles::find($id);
+        $request->validate([
+            'title' => 'required',
+            'image' => 'required',
+            'description' => 'required',
+            'cicle_id' => 'required',
+        ]);
+  
+        $article->update($request->all());
+       
+        return redirect()->route('admin.articles.index')
+                        ->with('success','Article updated successfully');
+                        
     }
 
     /**

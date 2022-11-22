@@ -2,11 +2,7 @@
   
 @section('content')
 <div class="container">
-    <div class="">
-        <div class="">
-            <h2>Add new Article</h2>
-        </div>
-    </div>
+    <h2>Update Article</h2>
 </div>
    
 @if ($errors->any())
@@ -20,38 +16,49 @@
     </div>
 @endif
    
-<form action="{{ route('admin.articles.store') }}" method="POST">
+<form action="{{ route('admin.articles.update',$article->id) }}" method="POST">
     @csrf
+    @method('PUT')
     <div class="container">
      <div class="row ">
         <div class="col-xs-12 col-sm-12 col-md-12">
             <div class="form-group">
                 <strong>Title:</strong>
-                <input type="text" name="title" class="form-control" placeholder="Title" >
+                <input type="text" name="title" class="form-control" value = "{{$article->title}}" placeholder="Title" >
             </div>
         </div>
         <div class="col-xs-12 col-sm-12 col-md-12">
             <div class="form-group">
                 <strong>Img:</strong>
-                <input type="text" name="image" class="form-control" placeholder="Image">
+                <input type="text" name="image" class="form-control" value = "{{$article->image}}" placeholder="Image">
             </div>
         </div>
         <div class="col-xs-12 col-sm-12 col-md-12">
             <div class="form-group">
                 <strong>Description:</strong>
-                <textarea class="form-control" style="height:150px" name="description" placeholder="Description"></textarea>
+                <input type="text" name="description" class="form-control" value="{{$article->description}}" placeholder="Description">  
             </div>
         </div>
+        
+        <div class = "col-xs-12 col-sm-12 col-md-12">
+        <strong>Cicle:</strong>
         <div class="input-group{{ $errors->has('cicle') ? ' has-danger' : '' }}">
             <select class="form-control{{ $errors->has('cicle_id') ? ' is-invalid' : '' }}" name="cicle_id">
-                <option value="" selected disabled hidden>Cicles</option>
-                     @foreach($cicles as $cicle)
-                        <option value="{{$cicle->id}}">{{$cicle->name}}</option>
-                     @endforeach
-             </select>
-         </div><br><br><br>
+            @foreach($cicles as $cicle)
+                @if($cicle->id==$article->cicle_id)
+                    <option value="{{$cicle->id}}">{{$cicle->name}}</option>
+                        @foreach($cicles as $cicle)
+                            <option value="{{$cicle->id}}">{{$cicle->name}}</option>
+                        @endforeach
+                @endif
+            @endforeach
+            </select>
+         </div>
+        </div>  
+        
         <div class="col-xs-12 col-sm-12 col-md-12 text-center">
-                <button type="submit" class="btn btn-primary">Submit</button>
+        <br>
+                <button class="btn btn-primary" type ="submit">Submit</button>
                 <a class="btn btn-primary" href="{{ route('admin.articles.index') }}"> Back</a>
         </div>
     </div>

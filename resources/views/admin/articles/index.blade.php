@@ -20,17 +20,14 @@
                         @else
                         <tr>
                             <td><div class="col-lg-4 col-md-4 col-sm-4 container justify-content-center">{{$article->title}}<div></td>
-                            
                         </tr>
                         <tr>
                             <td>{{$article->description}}</td>
                         </tr>
                         <tr>
                             <td>
-
-                            <a class="btn btn-primary btm-sm" href="{{ route('admin.articles.create') }}"> Edit</a>
+                            <a class="btn btn-primary btm-sm" href="{{ route('admin.articles.edit', $article->id ) }}"> Edit</a>
                             <a class="btn btn-danger btm-sm" href="{{ route('admin.articles.create') }}"> Delete</a>
-
                             </td>
                         </tr>
                         @endif
