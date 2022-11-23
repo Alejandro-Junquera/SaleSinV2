@@ -22,6 +22,7 @@ Route::get('/home', 'HomeController@index')->name('home');
 Route::namespace('Admin')->prefix('admin')->middleware(['auth','auth.admin'])->name('admin.')->group(function(){
     Route::resource('/users','UserController',['except'=>['show','create','store']]);
     Route::resource('/articles','ArticleController');
+    Route::post('article/softD/{id}','ArticleController@softDestroy')->name('articleSoftD');
     Route::post('user/activate/{id}', 'UserController@activate')->name('activate');
     Route::post('user/disable/{id}','UserController@disable')->name('disable');
     Route::post('user/softD/{id}','UserController@softDestroy')->name('softD');

@@ -105,4 +105,13 @@ class ArticleController extends Controller
     {
         //
     }
+
+    public function softDestroy($id)
+    {
+        $article = Articles::find($id);
+        $article->deleted = '1';
+        $article->save();
+        return redirect()->route('admin.articles.index')
+        ->with('success','Article deleted successfully');
+    }
 }
