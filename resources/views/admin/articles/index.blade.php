@@ -22,7 +22,7 @@
                             <td><div class="col-lg-4 col-md-4 col-sm-4 container justify-content-center">{{$article->title}}<div></td>
                         </tr>
                         <tr>
-                            <td>{{$article->description}}</td>
+                            <td>{{$article->description}}<label class="float-right"><img src="{{ asset('images/'.$article->image) }}" style="width:200px;"></></label></td>
                         </tr>
                         <tr>
                             <td>

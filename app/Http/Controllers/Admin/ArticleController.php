@@ -39,13 +39,24 @@ class ArticleController extends Controller
     {
         $request->validate([
             'title' => 'required',
+            'image'=> 'required',
             'description' => 'required',
+            'cicle_id'=> 'required',
         ]);
+        $article = new Articles;
+        $article->title = $request->get('title');
+        $file = $request->file('image');
+        //obtenemos el nombre del archivo
+        $nombre =  time()."_".$file->getClientOriginalName();
+        //indicamos que queremos guardar un nuevo archivo en el disco local
+        \Storage::disk('imagesStorage')->put($nombre,  \File::get($file));
+        $article->image = $nombre;
+        $article->description = $request->get('description');
+        $article->cicle_id = $request->get('cicle_id');
+        $article->save();
+        
+        return redirect()->route('admin.articles.index')->with('success', 'Article created successfully.');
   
-        Articles::create($request->all());
-   
-        return redirect()->route('admin.articles.index')
-                        ->with('success','Article created successfully.');
     }
 
     /**
