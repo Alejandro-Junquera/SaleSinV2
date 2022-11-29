@@ -98,8 +98,22 @@ class ArticleController extends Controller
             'description' => 'required',
             'cicle_id' => 'required',
         ]);
-  
-        $article->update($request->all());
+        
+        $file = $request->file('image');
+        //obtenemos el nombre del archivo
+        $nombre =  time()."_".$file->getClientOriginalName();
+        //indicamos que queremos guardar un nuevo archivo en el disco local
+        \Storage::disk('imagesStorage')->put($nombre,  \File::get($file));
+        $article->image = $nombre;
+
+        $article->update(
+            [
+                'title' => $request->get('title'),
+                $article->image = $nombre,
+                'description' => $request->get('description'),
+                'cicle_id' => $request->get('cicle_id'),
+            ]
+        );
        
         return redirect()->route('admin.articles.index')
                         ->with('success','Article updated successfully');
