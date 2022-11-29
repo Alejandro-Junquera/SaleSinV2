@@ -15,7 +15,8 @@
                         
                         </thead>
                         <tbody>
-                        @foreach($articles as $article)
+                        @forelse($articles as $article)
+                       
                         @if($article->deleted==1)
                         @else
                         <tr>
@@ -60,7 +61,11 @@
                             </td>
                         </tr>
                         @endif
-                        @endforeach
+                        @empty
+                        <div class="alert alert-danger">
+                            {{ __("No hay ninguna noticia.") }}
+                        </div>
+                        @endforelse
                     </tbody>
                 </table>
                 <a class="btn btn-success" href="{{ route('admin.articles.create') }}"> Create New Article</a>
