@@ -94,22 +94,23 @@ class ArticleController extends Controller
         $article=Articles::find($id);
         $request->validate([
             'title' => 'required',
-            'image' => 'required',
             'description' => 'required',
             'cicle_id' => 'required',
         ]);
         
-        $file = $request->file('image');
-        //obtenemos el nombre del archivo
-        $nombre =  time()."_".$file->getClientOriginalName();
-        //indicamos que queremos guardar un nuevo archivo en el disco local
-        \Storage::disk('imagesStorage')->put($nombre,  \File::get($file));
-        $article->image = $nombre;
+        $file = $request->file('image'); 
+        if($file!=''){
+            //obtenemos el nombre del archivo
+            $nombre =  time()."_".$file->getClientOriginalName();
+            //indicamos que queremos guardar un nuevo archivo en el disco local
+            \Storage::disk('imagesStorage')->put($nombre,  \File::get($file));
+            $article->image = $nombre;
+        }
 
         $article->update(
             [
                 'title' => $request->get('title'),
-                $article->image = $nombre,
+                // $article->image = $nombre,
                 'description' => $request->get('description'),
                 'cicle_id' => $request->get('cicle_id'),
             ]

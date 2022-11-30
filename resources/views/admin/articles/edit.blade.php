@@ -22,24 +22,18 @@
     <div class="container">
      <div class="row ">
         <div class="col-xs-12 col-sm-12 col-md-12">
-            <div class="form-group">
                 <strong>Title:</strong>
                 <input type="text" name="title" class="form-control" value = "{{$article->title}}" placeholder="Title" >
-            </div>
         </div>
         <div class="col-xs-12 col-sm-12 col-md-12">
-            <div class="form-group">
                 <strong>Img:</strong>
                 <input type="text" class="form-control" value="{{$article->image}}" placeholder="Image" readonly>
                 <br>
                 <input type="file" name="image" placeholder="Image">
-            </div>
         </div>
         <div class="col-xs-12 col-sm-12 col-md-12">
-            <div class="form-group">
                 <strong>Description:</strong>
                 <input type="text" name="description" class="form-control" value="{{$article->description}}" placeholder="Description">  
-            </div>
         </div>
         
         <div class = "col-xs-12 col-sm-12 col-md-12">
