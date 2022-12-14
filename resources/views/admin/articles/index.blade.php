@@ -49,11 +49,11 @@
                                             <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                                         </div>
                                         <div class="modal-body">
-                                            Delete {{$article->title}}?
+                                            Are you sure?
                                         </div>
                                         <div class="modal-footer">
-                                            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-                                        <input type="submit" value="Delete" class="btn btn-danger btm-sm"/>
+                                            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">No</button>
+                                        <input type="submit" value="Yes" class="btn btn-danger btm-sm"/>
                                         </div>
                                         </div>
                                         </form>
