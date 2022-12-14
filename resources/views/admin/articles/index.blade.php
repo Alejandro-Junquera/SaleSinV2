@@ -18,7 +18,7 @@
                         @forelse($articles as $article)
                         @if($article->deleted==1)
                         @else
-                        <tr>
+                        <tr class="col-md-12">
                             <td>
                             <strong>{{$article->title}}</strong>
                             <br>
