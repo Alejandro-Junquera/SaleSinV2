@@ -22,7 +22,7 @@
                             <td>
                             <strong>{{$article->title}}</strong>
                             <br>
-                            <label class="float-right"><img src="{{ asset('images/'.$article->image) }}" style="width:200px;"></></label>
+                            <label class="float-right"><img src="{{ asset('images/'.$article->image) }}" width="200" height="200"></></label>
                             <br>
                             {{$article->description}}
                             </td>
