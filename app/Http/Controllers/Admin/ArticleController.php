@@ -15,7 +15,8 @@ class ArticleController extends Controller
      */
     public function index()
     {
-        return view('admin.articles.index')->with('articles',Articles::paginate(5));
+        $articles = Articles::where('deleted','=','true')->orderBy('created_at','desc')->paginate(5);
+        return view('admin.articles.index', compact('articles'));
     }
 
     /**
