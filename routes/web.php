@@ -27,5 +27,8 @@ Route::namespace('Admin')->prefix('admin')->middleware(['auth','auth.admin'])->n
     Route::post('user/disable/{id}','UserController@disable')->name('disable');
     Route::post('user/softD/{id}','UserController@softDestroy')->name('softD');
 });
+Route::namespace('User')->prefix('user')->middleware(['auth','auth.user'])->name('user.')->group(function(){
+    Route::resource('/offers','OffersController');
+});
 
 
