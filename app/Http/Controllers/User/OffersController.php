@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use App\cicles;
 use App\offers;
+use App\Applied;
 class OffersController extends Controller
 {
     /**
@@ -16,8 +17,8 @@ class OffersController extends Controller
     public function index()
     {
         $offers = Offers::where('deleted','=','true')->orderBy('created_at','desc')->paginate(5);
-        $cicle = Cicles::all();
-        return view('user.offers.index', compact('offers','cicle'));
+        $cicles = Cicles::all();
+        return view('user.offers.index', compact('offers','cicles'));
     }
 
     /**
@@ -63,7 +64,8 @@ class OffersController extends Controller
      */
     public function show($id)
     {
-        //
+        $offer = Offers::find($id);
+        return view('user.offers.index', compact('offer'));
     }
 
     /**
@@ -124,5 +126,25 @@ class OffersController extends Controller
         $offer ->deleted = '1';
         $offer ->save();
         return redirect()->route('user.offers.index')->with('success','Offer deleted successfully');
+    }
+
+    public function apply($id)
+    {
+        $offer = Offers::find($id);
+
+        $offer-> update(
+            [
+            'num_candidates'=> ($offer->num_candidates) +1,
+            ]);
+        
+        $apply = new Applied;
+        $apply->create(
+            [   
+                'offer_id' => $id,
+                'user_id' => auth()->id(),
+                'deleted' =>'0'
+            ]
+        );
+        return redirect()->route('user.offers.index')->with('success','Offer applied successfully');
     }
 }
