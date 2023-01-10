@@ -4,7 +4,8 @@ namespace App\Http\Controllers\User;
 
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
-
+use App\cicles;
+use App\offers;
 class OffersController extends Controller
 {
     /**
@@ -14,7 +15,9 @@ class OffersController extends Controller
      */
     public function index()
     {
-        return view('user.offers.index');
+        $offer = Offers::where('deleted','=','true')->orderBy('created_at','desc')->paginate(5);
+        $cicle = Cicles::all();
+        return view('user.offers.index', compact('offer','cicle'));
     }
 
     /**
@@ -24,7 +27,8 @@ class OffersController extends Controller
      */
     public function create()
     {
-        //
+        $offer = Offers::all();
+        return view('user.offers.create', compact('offer'));
     }
 
     /**
@@ -35,7 +39,20 @@ class OffersController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $request->validate([
+            'title'=> 'required',
+            'description' => 'required',
+            'date_max'=> 'required',
+            'num_candidates'=>'required',
+        ]);
+        $offer = new Offers;
+        $offer->title = $request->get('title');
+        $offer->description = $request->get('description');
+        $offer->date_max = $request->get('date_max');
+        $offer->num_candidates = $request->get('num_candidates');
+        $offer->save();
+        
+        return redirect()->route('user.offers.index')->with('success', 'Offer created successfully.');
     }
 
     /**
@@ -57,7 +74,8 @@ class OffersController extends Controller
      */
     public function edit($id)
     {
-        //
+        $offer = Offers::all();
+        return view('user.offers.edit', compact('offer'))->with(['offer'=>Offers::find($id)]);
     }
 
     /**
@@ -69,7 +87,24 @@ class OffersController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $offer = Offers::find($id);
+        $request->validate([
+            'title'=> 'required',
+            'description' => 'required',
+            'date_max'=> 'required',
+            'num_candidates'=>'required',
+        ]);
+
+        $offer->update(
+            [
+                'title' => $request->get('title'),
+                'description' => $request->get('description'),
+                'date_max' => $request->get('date_max'),
+                'num_candidates' => $request->get('num_candidates'),
+            ]
+        );
+       
+        return redirect()->route('user.offers.index')->with('success','Offer updated successfully');
     }
 
     /**
@@ -81,5 +116,13 @@ class OffersController extends Controller
     public function destroy($id)
     {
         //
+    }
+
+    public function softDestroy($id)
+    {
+        $offer = Offers::find($id);
+        $offer ->deleted = '1';
+        $offer ->save();
+        return redirect()->route('user.offers.index')->with('success','Offer deleted successfully');
     }
 }
