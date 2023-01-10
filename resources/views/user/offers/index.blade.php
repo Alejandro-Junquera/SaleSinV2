@@ -15,14 +15,13 @@
                         
                     </thead>
                     <tbody>
-                        @forelse($offers as $offer)
-                            @if($offer->deleted==1)
-                            @else
-                                @forelse($applies as $apply)
+                        @foreach($offers as $offer)
+                            @if($offer->deleted==0)
+                                @foreach($applies as $apply)
                                     @if($apply->offer_id != $offer->id)
                                         <tr class="col-md-12">
-                                    
-                                        @forelse ($cicles as $cicle)
+
+                                        @foreach($cicles as $cicle)
                                             @if($offer->cicle_id == $cicle->id)
                                                 <td>
                                                 @if($cicle->img != "")
@@ -32,7 +31,7 @@
                                                 @endif
                                                 </td>
                                             @endif
-                                        @endforelse
+                                        @endforeach
                                         <td>
                                         <strong>{{$offer->title}}</strong>
                                         <br>
@@ -78,14 +77,10 @@
                                         </div>
                                         </td>
                                         </tr>
-                                        @empty
-                                        <div class="alert alert-danger">
-                                            {{ __("There are any offers") }}
-                                        </div>
                                     @endif
-                                @endforelse
+                                @endforeach
                             @endif
-                        @endforelse
+                        @endforeach
                     </tbody>
                 </table>
                 
