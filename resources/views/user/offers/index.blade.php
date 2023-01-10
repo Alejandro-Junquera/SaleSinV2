@@ -27,7 +27,7 @@
                             <td>
                             <div style="text-align: right;width:150px">
                                 
-                                <a class="btn btn-primary btm-sm float-right" href="{{ route('user.offers.edit', $offers->id ) }}"> Edit</a>
+                                <a class="btn btn-primary btm-sm float-right" href="{{ route('user.offers.edit', $offer->id ) }}"> Edit</a>
                                 <!-- Delete -->
                                 <a style="visibility: hidden"class="float-left"><-</a>
                                     <a class="float-left">
