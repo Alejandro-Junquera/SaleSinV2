@@ -29,6 +29,7 @@ Route::namespace('Admin')->prefix('admin')->middleware(['auth','auth.admin'])->n
 });
 Route::namespace('User')->prefix('user')->middleware(['auth','auth.user'])->name('user.')->group(function(){
     Route::resource('/offers','OffersController');
+    Route::post('offers/softD/{id}','OffersController@softDestroy')->name('offerSoftD');
 });
 Route::name('imprimir')->get('/imprimir-pdf', 'Controller@imprimir');
 

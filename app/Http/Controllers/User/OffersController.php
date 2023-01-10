@@ -15,9 +15,9 @@ class OffersController extends Controller
      */
     public function index()
     {
-        $offer = Offers::where('deleted','=','true')->orderBy('created_at','desc')->paginate(5);
+        $offers = Offers::where('deleted','=','true')->orderBy('created_at','desc')->paginate(5);
         $cicle = Cicles::all();
-        return view('user.offers.index', compact('offer','cicle'));
+        return view('user.offers.index', compact('offers','cicle'));
     }
 
     /**
