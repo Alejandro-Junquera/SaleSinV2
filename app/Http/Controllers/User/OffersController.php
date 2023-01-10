@@ -18,7 +18,10 @@ class OffersController extends Controller
     {
         $offers = Offers::where('deleted','=','true')->orderBy('created_at','desc')->paginate(5);
         $cicles = Cicles::all();
-        return view('user.offers.index', compact('offers','cicles'));
+
+        $applies = Applied::where('user_id','=', auth()->id());
+
+        return view('user.offers.index', compact('offers','cicles', 'applies'));
     }
 
     /**
