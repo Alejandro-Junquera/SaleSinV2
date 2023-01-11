@@ -7,6 +7,7 @@ use App\Http\Controllers\Controller;
 use App\cicles;
 use App\offers;
 use App\Applied;
+use App\User;
 class OffersController extends Controller
 {
     /**
@@ -19,16 +20,8 @@ class OffersController extends Controller
         $offers = Offers::where('deleted','=','true')->orderBy('created_at','desc')->paginate(5);
         $cicles = Cicles::all();
 
-        $applies = Applied::where('user_id','=', auth()->id())->paginate(5);
-
-        // foreach($offers as $offer){
-        //     foreach($applies as $apply){
-        //         if($apply->offer_id != $offer->id)
-        //             $result 
-        //     }
-        // }
-
-
+        $applieds = appliedsOffers()->with[('offer')]->paginate(5);
+        dd($applieds);
         return view('user.offers.index', compact('offers','cicles', 'applies'));
     }
 

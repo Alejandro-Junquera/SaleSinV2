@@ -28,6 +28,10 @@ class User extends Authenticatable implements MustVerifyEmail
         'password', 'remember_token',
     ];
 
+    public function appliedsOffers(){
+        return $this->hasMany(Applied::class);
+    }
+    
     /**
      * The attributes that should be cast to native types.
      *
