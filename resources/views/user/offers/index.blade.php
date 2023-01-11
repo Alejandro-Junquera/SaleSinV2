@@ -15,10 +15,9 @@
                         
                     </thead>
                     <tbody>
-                        <!-- QUITAR BUCLES -->
-                        @forelse($offers as $offer)
-                        @if($offer->deleted==0)
+                        @foreach($offers as $offer)
                             <tr class="col-md-12">
+                            
                             @foreach($cicles as $cicle)
                                 @if($offer->cicle_id == $cicle->id)
                                     <td>
@@ -75,9 +74,7 @@
                             </div>
                             </td>
                             </tr>
-                            @endif
-                        @endif
-                        @enforelse
+                        @endforeach
                     </tbody>
                 </table>
                 
