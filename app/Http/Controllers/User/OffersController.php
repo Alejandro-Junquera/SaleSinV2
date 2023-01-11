@@ -17,10 +17,11 @@ class OffersController extends Controller
      */
     public function index()
     {
+        $offer = Offers::all();
         $cicles = Cicles::all();
         $applies = Applied::where('user_id','!=',auth()->id())->with(['offer'])->paginate(5);
-       
-        return view('user.offers.index', compact('cicles', 'applies'));
+        //dd($offers);
+        return view('user.offers.index', compact('cicles', 'offers', 'applies'));
     }
 
     /**
