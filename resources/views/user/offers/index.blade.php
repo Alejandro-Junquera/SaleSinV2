@@ -80,7 +80,7 @@
                 {{$offers->links()}}
                     <br>
                     <br>
-                    <a class="btn btn-success" href="{{ route('user.offers.create') }}"> Create New Offer</a>
+                    <!-- <a class="btn btn-success" href="{{ route('user.offers.create') }}"> Create New Offer</a> -->
                 </div>
             </div>
         </div>
