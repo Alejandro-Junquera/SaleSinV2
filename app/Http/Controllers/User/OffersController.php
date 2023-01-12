@@ -17,11 +17,18 @@ class OffersController extends Controller
      */
     public function index()
     {
-        $offer = Offers::all();
-        $cicles = Cicles::all();
-        $applies = Applied::where('user_id','!=',auth()->id())->with(['offer'])->paginate(5);
-        //dd($offers);
-        return view('user.offers.index', compact('cicles', 'offers', 'applies'));
+        $offers = Offers::all();
+        $cicles = Cicles::all(); 
+        $user_id= auth()->id();
+        $applies = Applied::where('user_id','!=',$user_id)->with(['offer'])->paginate(20);
+
+        $offers = Offers::select('offers.id', 'offers.title', 'offers.description', 'offers.num_candidates', 'offers.created_at', 'offers.updated_at', 'offers.deleted', 'applieds.offer_id', 'applieds.user_id')
+                ->leftJoin('applieds', function($join) use ($user_id) {
+                 $join->on('offers.id', '=', 'applieds.offer_id')
+                      ->where('applieds.user_id', '=', $user_id);
+              })->whereNull('applieds.id')->where('offers.deleted', 0)->paginate(5);
+    
+        return view('user.offers.index', compact('cicles', 'offers'));
     }
 
     /**
