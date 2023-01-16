@@ -5,6 +5,7 @@
     <div class="row justify-content-center">
         <div class="col-md-12">
             <div class="card">
+            
                 <div class="card-header">Manage Offers</div>
                 <br/>
                 <div class="container justify-content-center">
@@ -17,17 +18,17 @@
                     <tbody>
                         @foreach($offers as $offer)
                             <tr class="col-md-12">
-                                @foreach($cicles as $cicle)
+                                <td>
+                                @foreach($cicles as $cicle) 
                                     @if($offer->cicle_id == $cicle->id)
-                                        <td>
                                         @if($cicle->img != "")
                                             <img src="{{ asset('img_ciclos/'.$cicle->img) }}" style="width:40px;"></>
                                             @else
                                             <img src="{{ asset('img_ciclos/noimage.png') }}" style="width:40px;"></>
                                         @endif
-                                        </td>
                                     @endif
                                 @endforeach
+                                </td>
                                 <td>
                                 <strong>{{$offer->title}}</strong>
                                 <br>
@@ -73,14 +74,15 @@
                                 </div>
                                 </td>
                                 </tr>
-                          
                         @endforeach
                     </tbody>
                 </table>
                 {{$offers->links()}}
+                <a href="{{ route('pdf') }}">
+                    <button type="submit" class="btn btn-success btm-sm float-left"> Exportar PDF</button>
+                </a>
                     <br>
                     <br>
-                    <!-- <a class="btn btn-success" href="{{ route('user.offers.create') }}"> Create New Offer</a> -->
                 </div>
             </div>
         </div>

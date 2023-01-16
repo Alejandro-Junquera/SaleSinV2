@@ -19,6 +19,7 @@ Auth::routes(['verify'=>true]);
 
 Route::get('email/verify/{id}','Auth\VerificationController@verifyx')->name('verification.verify');
 Route::get('/home', 'HomeController@index')->name('home');
+Route::get('pdf', 'InformesController@general')->name('pdf');
 Route::namespace('Admin')->prefix('admin')->middleware(['auth','auth.admin'])->name('admin.')->group(function(){
     Route::resource('/users','UserController',['except'=>['show','create','store']]);
     Route::resource('/articles','ArticleController');
@@ -31,7 +32,7 @@ Route::namespace('User')->prefix('user')->middleware(['auth','auth.user'])->name
     Route::resource('/offers','OffersController');
     Route::post('offers/softD/{id}','OffersController@softDestroy')->name('offerSoftD');
     Route::post('offers/apply/{id}','OffersController@apply')->name('offerApply');
+    Route::get('send-email-pdf', [PDFController::class,'index']);
 }); 
-Route::name('imprimir')->get('/imprimir-pdf', 'Controller@imprimir');
 
 

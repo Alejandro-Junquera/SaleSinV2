@@ -135,7 +135,6 @@
                             </a>
                         </div>
                         </div>
-                        <a href="{{ route('imprimir') }}">PDF de prueba</a>
                     </div>
                 </div>
             </div>
