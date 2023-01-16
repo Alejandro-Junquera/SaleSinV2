@@ -79,7 +79,7 @@
                 </table>
                 {{$offers->links()}}
                 <a href="{{ route('pdf') }}">
-                    <button type="submit" class="btn btn-success btm-sm float-left"> Exportar PDF</button>
+                    <button type="submit" class="btn btn-success btm-sm float-left"> Export PDF</button>
                 </a>
                     <br>
                     <br>
