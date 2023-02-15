@@ -53,12 +53,26 @@ class UserController extends Controller
             'name' => 'required',
             'surname' => 'required',
             'email' => 'required',
+            
         ]);
   
         $user->update($request->all());
   
         return redirect()->route('admin.users.index')
                         ->with('success','User updated successfully');
+    }
+
+    public function storeTest(Request $request)
+    {
+        $data = request()->validate([
+            'name' => '',
+            'surname' => '',
+            'email' => '',
+            'cicle_id' => '',
+            'password' => '',
+        ]);
+
+        User::create($data);
     }
 
     /**

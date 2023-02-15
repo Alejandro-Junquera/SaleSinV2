@@ -60,6 +60,19 @@ class ArticleController extends Controller
   
     }
 
+    public function storeTest(Request $request)
+    {
+            $data = request()->validate([
+                'title' => '',
+                'image' => '',
+                'cicle_id'=> '',
+                'description' => '',
+            ]);
+    
+            Articles::create($data);
+    }
+    
+
     /**
      * Display the specified resource.
      *
@@ -130,7 +143,11 @@ class ArticleController extends Controller
      */
     public function destroy($id)
     {
-        //
+        $article = Articles::find($id);
+        $article->delete();
+
+        return redirect('/articlesDelete/');
+
     }
 
     public function softDestroy($id)
